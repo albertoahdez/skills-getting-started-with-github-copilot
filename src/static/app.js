@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         activityCard.className = "activity-card";
 
         const spotsLeft = details.max_participants - details.participants.length;
-
-        // Crear la lista de participantes
+        // Create the participants list
         let participantsHTML = "";
         if (details.participants && details.participants.length > 0) {
           participantsHTML = `
