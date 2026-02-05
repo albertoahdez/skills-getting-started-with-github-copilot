@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
   const themeToggle = document.getElementById("theme-toggle");
+  const searchInput = document.getElementById("search-activities");
 
   // Function to fetch activities from API
   async function fetchActivities() {
@@ -164,5 +165,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Save preference to localStorage
     localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+
+    // Apply dark mode to dynamic elements
+    applyDarkModeToDynamicElements();
+  });
+
+  // Apply dark mode to dynamic elements
+  function applyDarkModeToDynamicElements() {
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    const dynamicElements = document.querySelectorAll(".activity-card, section, header, button");
+
+    dynamicElements.forEach((el) => {
+      if (isDarkMode) {
+        el.classList.add("dark-mode");
+      } else {
+        el.classList.remove("dark-mode");
+      }
+    });
+  }
+
+  // Apply dark mode to dynamic elements on page load
+  if (savedTheme === "dark") {
+    applyDarkModeToDynamicElements();
+  }
+
+  // Función para filtrar actividades en tiempo real
+  searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const activityCards = document.querySelectorAll(".activity-card");
+    let hasResults = false;
+
+    activityCards.forEach(card => {
+      const title = card.querySelector("h4").textContent.toLowerCase();
+      const description = card.querySelector("p").textContent.toLowerCase();
+
+      if (title.includes(query) || description.includes(query)) {
+        card.style.display = "block";
+        hasResults = true;
+      } else {
+        card.style.display = "none";
+      }
+    });
+
+    const noResultsMessage = document.getElementById("no-results-message");
+    if (!hasResults) {
+      if (!noResultsMessage) {
+        const message = document.createElement("p");
+        message.id = "no-results-message";
+        message.textContent = "No activities found";
+        message.style.textAlign = "center";
+        message.style.color = "#757575";
+        document.getElementById("activities-list").appendChild(message);
+      }
+    } else if (noResultsMessage) {
+      noResultsMessage.remove();
+    }
   });
 });
