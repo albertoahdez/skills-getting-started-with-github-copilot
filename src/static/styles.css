@@ -6,26 +6,29 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   line-height: 1.6;
   color: #333;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
-  background-color: #f5f5f5;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
 }
 
 header {
   text-align: center;
   padding: 20px 0;
   margin-bottom: 30px;
-  background-color: #1a237e;
+  background: linear-gradient(135deg, #1a237e, #3949ab);
   color: white;
-  border-radius: 5px;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
 
 header h1 {
   margin-bottom: 10px;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 main {
@@ -42,12 +45,16 @@ main {
 }
 
 section {
-  background-color: white;
+  background: white;
   padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 500px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
 }
 
 section h3 {
@@ -135,7 +142,6 @@ section h3 {
   line-height: 1;
   pointer-events: none;
 }
-}
 
 .participants-section.empty {
   background-color: #f9f9f9;
@@ -168,51 +174,28 @@ section h3 {
 }
 
 button {
-  background-color: #1a237e;
+  background: linear-gradient(135deg, #3949ab, #1a237e);
   color: white;
   border: none;
-  padding: 10px 15px;
-  font-size: 16px;
-  border-radius: 5px;
+  padding: 10px 20px;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.2s;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 button:hover {
-  background-color: #3949ab;
-}
-
-.message {
-  margin-top: 20px;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.success {
-  background-color: #e8f5e9;
-  color: #2e7d32;
-  border: 1px solid #a5d6a7;
-}
-
-.error {
-  background-color: #ffebee;
-  color: #c62828;
-  border: 1px solid #ef9a9a;
-}
-
-.info {
-  background-color: #d1ecf1;
-  color: #0c5460;
-  border: 1px solid #bee5eb;
-}
-
-.hidden {
-  display: none;
+  transform: translateY(-5px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 footer {
   text-align: center;
-  margin-top: 30px;
   padding: 20px;
-  color: #666;
+  margin-top: 30px;
+  background: linear-gradient(135deg, #1a237e, #3949ab);
+  color: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
 }
