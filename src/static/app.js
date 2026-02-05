@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const activitySelect = document.getElementById("activity");
   const signupForm = document.getElementById("signup-form");
   const messageDiv = document.getElementById("message");
+  const themeToggle = document.getElementById("theme-toggle");
 
   // Function to fetch activities from API
   async function fetchActivities() {
@@ -147,4 +148,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initialize app
   fetchActivities();
+
+  // Load theme preference from localStorage
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    themeToggle.textContent = "☀️";
+  }
+
+  // Toggle dark mode
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    const isDarkMode = document.body.classList.contains("dark-mode");
+    themeToggle.textContent = isDarkMode ? "☀️" : "🌙";
+
+    // Save preference to localStorage
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  });
 });
